@@ -7,6 +7,9 @@ cask "detect-it-easy" do
 
   pkg "die_mac_3.10_x86_64.pkg"
 
+  uninstall quit:    "com.yourcompany.DiE",
+            pkgutil: "ntinfo.die"
+
   livecheck do
     url "https://github.com/horsicq/DIE-engine/releases/latest"
     strategy :github_latest
