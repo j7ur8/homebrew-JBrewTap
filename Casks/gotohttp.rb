@@ -8,7 +8,11 @@ cask "gotohttp" do
   homepage "https://gotohttp.com/"
 
   installer manual: "Install"
-  uninstall manual: "Uninstall"
+  uninstall script: {
+    executable: "/usr/bin/open",
+    args:       ["#{staged_path}/Uninstall"],
+    sudo:       false,
+  }
 
   livecheck do
     skip "The vendor provides an unversioned DMG with no stable version metadata."
