@@ -7,9 +7,12 @@ cask "gotohttp" do
   desc "Remote access and control software"
   homepage "https://gotohttp.com/"
 
-  pkg "Install.pkg"
-
-  uninstall pkgutil: "com.pingbo.gotohttp.Install"
+  installer manual: "Install.pkg"
+  uninstall script: {
+    executable: "/usr/bin/open",
+    args:       ["#{staged_path}/Uninstall.pkg"],
+    sudo:       false,
+  }
 
   livecheck do
     skip "The vendor provides an unversioned DMG with no stable version metadata."
